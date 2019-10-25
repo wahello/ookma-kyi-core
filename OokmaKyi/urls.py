@@ -22,7 +22,11 @@ from django.urls import include
 from django.conf import settings
 from django.conf.urls.static import static
 
+from pages.views import page_view
+
+
 urlpatterns = [
+    path('', page_view, name="site_index"),
     path('admin/', admin.site.urls),
     path('pages/', include('pages.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)    # development use
