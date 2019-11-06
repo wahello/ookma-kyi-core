@@ -29,4 +29,5 @@ urlpatterns = [
     path('', page_view, name="site_index"),
     path('admin/', admin.site.urls),
     path('pages/', include('pages.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)    # development use
