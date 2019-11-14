@@ -1,0 +1,18 @@
+{% extends "base_generic.html" %}
+
+    {% block content %}
+        <div class="row mt-5">
+  <div class="col-md-6 m-auto">
+    <div class="card card-body">
+      <h1 class="text-center mb-3">
+          <i class="fas fa-user-alt" aria-hidden="true"></i>  Profile
+      </h1>
+        <ul>
+            <li>Username: {{ user.username }}</li>
+            <li>Password: ****** <a href="{% url 'password_change' %}">Change password</a></li>
+            <li>Email: {{ user.email }}</li>
+        </ul>
+    </div>
+  </div>
+</div>
+    {% endblock %}

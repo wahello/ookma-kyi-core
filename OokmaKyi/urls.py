@@ -24,10 +24,10 @@ from django.conf.urls.static import static
 
 from pages.views import page_view
 
-
 urlpatterns = [
     path('', page_view, name="site_index"),
     path('admin/', admin.site.urls),
     path('pages/', include('pages.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/profile/', include('profiles.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)    # development use
