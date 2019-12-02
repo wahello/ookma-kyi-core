@@ -11,6 +11,7 @@
             <li>Username: {{ user.username }}</li>
             <li>Password: ****** <a href="{% url 'password_change' %}">Change password</a></li>
             <li>Email: {{ user.email }}</li>
+            <li>Notifications: {% if user.profile.notification_preference %}Allow{% else %}Deny{% endif %} <a href="{% url 'change_notification_preferences' %}">Update notification preference</a></li>
         </ul>
     </div>
   </div>
