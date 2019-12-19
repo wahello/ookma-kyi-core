@@ -1,0 +1,48 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <div class="row mt-5">
+  <div class="col-md-6 m-auto">
+    <div class="card card-body">
+      <h1 class="text-center mb-3">
+          <i class="fas fa-pen-alt" aria-hidden="true"></i>  Register
+      </h1>
+  <form method="post">
+    {% csrf_token %}
+    {% if form.errors %}
+    <div class="alert alert-primary" role="alert">
+    {% if form.errors.items|length == 1 %}<p>Please correct the error below.</p>{% else %}<p>Please correct the errors below.</p>{% endif %}
+    <ul>
+    {% for error in form.username.errors %}
+        <li>{{ error }}</li>
+    {% endfor %}
+    {% for error in form.password1.errors %}
+        <li>{{ error }}</li>
+    {% endfor %}
+    {% for error in form.password2.errors %}
+        <li>{{ error }}</li>
+    {% endfor %}
+    </ul>
+    </div>
+    {%  endif %}
+    <div class="form-group">
+    <label for="{{ form.username.id_for_label }}" class="label">Username</label>
+    <input type="text" class="form-control" aria-describedby="usernameHelpBlock" id="{{ form.username.id_for_label }}" name="{{ form.username.html_name }}" maxlength="150" placeholder="Enter desired username" autofocus required>
+    <span id="usernameHelpBlock" class="form-text text-muted">{{ form.username.help_text }}</span>
+    </div>
+    <div class="form-group">
+    <label for="{{ form.password1.id_for_label }}" class="label">Password</label>
+    <input type="password" class="form-control" aria-describedby="password1HelpBlock" id="{{ form.password1.id_for_label }}" name="{{ form.password1.html_name }}" placeholder="Enter password" required>
+    <span id="password1HelpBlock" class="form-text text-muted">{{ form.password1.help_text }}</span>
+    </div>
+    <div class="form-group">
+    <label for="{{ form.password2.id_for_label }}" class="label">Verify Password</label>
+    <input type="password" class="form-control" aria-describedby="password2HelpBlock" id="{{ form.password2.id_for_label }}" name="{{ form.password2.html_name }}" placeholder="Confirm your password" required>
+    <span id="password2HelpBlock" class="form-text text-muted">{{ form.password2.help_text }}</span>
+    </div>
+    <button type="submit" class="btn btn-primary btn-block">Sign up</button>
+  </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
