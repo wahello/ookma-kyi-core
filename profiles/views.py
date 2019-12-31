@@ -1,10 +1,9 @@
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 
-from profiles.forms import UpdateNotificationPreferenceForm
+from profiles.forms import SignupForm, UpdateNotificationPreferenceForm
 
 
 # Create your views here.
@@ -12,7 +11,7 @@ def signup_view(request):
     if request.user.is_authenticated:
         return HttpResponseRedirect("/")
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = SignupForm(request.POST)
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
@@ -21,7 +20,7 @@ def signup_view(request):
             login(request, user)
             return HttpResponseRedirect("/")
     else:
-        form = UserCreationForm()
+        form = SignupForm()
     return render(request, 'profiles/signup_form.html', {'form': form})
 
 
