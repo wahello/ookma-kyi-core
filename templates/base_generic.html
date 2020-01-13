@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 {% include "base_header.html" %}
-    <title>{{ page.title }}</title>
+    {% block title %}<title>Ookma-Kyi</title>{% endblock %}
 </head>
 <body>
     <div class="container">{% block content %}{% endblock %}</div>
