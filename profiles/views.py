@@ -21,16 +21,14 @@ def signup_view(request):
             return HttpResponseRedirect("/")
     else:
         form = SignupForm()
-    page_title = "Account Registration"
-    return render(request, 'profiles/signup_form.html', {'page_title': page_title, 'form': form})
+    return render(request, 'profiles/signup_form.html', {'form': form})
 
 
 @login_required
 def profile_view(request):
     """View function for user profiles."""
     user = request.user
-    page_title = "User Profile"
-    return render(request, 'profiles/profile.html', context={'page_title': page_title, 'user': user})
+    return render(request, 'profiles/profile.html', context={'user': user})
 
 
 @login_required
