@@ -32,4 +32,5 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/signup/', signup_view, name='signup'),
     path('accounts/profile/', include('profiles.urls')),
+    path('characters/', include('characters.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)    # development use

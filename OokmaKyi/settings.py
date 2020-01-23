@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'pages',
     'profiles',
+    'characters',
 ]
 
 MIDDLEWARE = [
