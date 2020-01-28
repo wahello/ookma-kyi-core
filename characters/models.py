@@ -10,11 +10,11 @@ class Character(models.Model):
     name = models.CharField(
         max_length=32,
         help_text="Enter a name for your character. Warning this cannot be changed latter!")
-    xp = models.PositiveIntegerField(default=0, validators=[MinValueValidator(1), MaxValueValidator(9999999)])
-    belt = models.ForeignKey('Belt', on_delete=models.CASCADE)
-    wins = models.PositiveIntegerField(default=0, validators=[MinValueValidator(1), MaxValueValidator(999999)])
-    loses = models.PositiveIntegerField(default=0, validators=[MinValueValidator(1), MaxValueValidator(999999)])
-    draws = models.PositiveIntegerField(default=0, validators=[MinValueValidator(1), MaxValueValidator(999999)])
+    xp = models.PositiveIntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(9999999)])
+    belt = models.ForeignKey('Belt', blank=True, on_delete=models.CASCADE)
+    wins = models.PositiveIntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(999999)])
+    loses = models.PositiveIntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(999999)])
+    draws = models.PositiveIntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(999999)])
 
 
 class Belt(models.Model):
@@ -24,7 +24,7 @@ class Belt(models.Model):
     )
     belt_image = models.ImageField(upload_to='belts/')
     min_xp = models.PositiveIntegerField(
-        validators=[MinValueValidator(1), MaxValueValidator(9999999)],
+        validators=[MinValueValidator(0), MaxValueValidator(9999999)],
         help_text="Minimum xp required to obtain belt, 0 for first belt")
     max_xp = models.PositiveIntegerField(
         validators=[MinValueValidator(1), MaxValueValidator(9999999)],
