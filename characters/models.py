@@ -11,7 +11,7 @@ class Character(models.Model):
         max_length=32,
         help_text="Enter a name for your character. Warning this cannot be changed latter!")
     xp = models.PositiveIntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(9999999)])
-    belt = models.ForeignKey('Belt', blank=True, on_delete=models.CASCADE)
+    belt = models.ForeignKey('Belt', null=True, blank=True, on_delete=models.CASCADE)
     wins = models.PositiveIntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(999999)])
     loses = models.PositiveIntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(999999)])
     draws = models.PositiveIntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(999999)])
