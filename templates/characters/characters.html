@@ -9,11 +9,33 @@
       <h1 class="text-center mb-3">
           <i class="fas fa-fist-raised" aria-hidden="true"></i>  Characters
       </h1>
-        {% if user.characters.items|length > 0 %}
-            <p>Characters here</p>
-        {% else %}
+        {% if user.character_set.count == 0 %}
             <p>You have no characters, why not create a new character?</p>
-            <a href="" class="btn btn-primary" role="button" title="Create a new character">Create a new character</a>
+            <a href="{% url 'create_character' %}" class="btn btn-primary" role="button" title="Create a new character">Create a new character</a>
+        {% else %}
+            <p>Characters</p>
+            {% for character in user.character_set.all %}
+                <table>
+                <tr>
+                    <th scope="row">Name:</th><td>{{ character.name }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Xp:</th><td>{{ character.xp }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Belt:</th><td>{{ character.belt }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Wins:</th><td headers="wins">{{ character.wins }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Loses:</th><td>{{ character.loses }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Draws:</th><td>{{ character.draws }}</td>
+                </tr>
+                </table>
+            {% endfor %}
         {% endif %}
     </div>
   </div>
